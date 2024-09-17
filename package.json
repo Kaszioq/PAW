@@ -1,0 +1,19 @@
+{
+  "name": "paw",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaszioq/PAW.git"
+  },
+  "author": "Kuba Kaszewski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kaszioq/PAW/issues"
+  },
+  "homepage": "https://github.com/Kaszioq/PAW#readme",
+  "description": ""
+}
