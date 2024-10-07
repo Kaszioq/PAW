@@ -15,5 +15,8 @@
     "url": "https://github.com/Kaszioq/PAW/issues"
   },
   "homepage": "https://github.com/Kaszioq/PAW#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
 }
