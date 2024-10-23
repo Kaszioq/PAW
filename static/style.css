@@ -1,0 +1,517 @@
+/* Resetowanie marginesów, paddingu i konfiguracja box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Podstawowe style ciała strony */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Nagłówek strony */
+header {
+    background: linear-gradient(135deg, #007bff, #00d4ff);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    margin-left: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffeb3b;
+}
+
+/* Sekcja Hero */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(135deg, #007bff, #00d4ff);
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.cta-button {
+    padding: 12px 25px;
+    background-color: #ffeb3b;
+    color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+    animation: fadeIn 2.5s ease-in-out;
+}
+
+.cta-button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Sekcja usług */
+.services {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.service-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+/* Sekcja Zaufania */
+.trust-section {
+    background-color: #e9f5ff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.trust-items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.trust-item {
+    width: 30%;
+    padding: 20px;
+}
+
+.trust-item img {
+    width: 50px;
+    margin-bottom: 20px;
+}
+
+.trust-item h3 {
+    color: #007bff;
+    font-size: 22px;
+}
+
+.trust-item p {
+    color: #666;
+}
+
+/* Sekcja zespołu */
+.team {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.team h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.team-members {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.member {
+    width: 30%;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.member img {
+    width: 100%;
+    max-width: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.member h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.member p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* Sekcja ofert */
+.offer {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.offer h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.offer-details {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.service-item h3 {
+    font-size: 22px;
+    color: #007bff;
+}
+
+.service-item p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Sekcja kontaktu */
+.contact {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Nowa sekcja - FAQ */
+.faq {
+    padding: 60px 20px;
+    background-color: #e9f5ff;
+    text-align: center;
+}
+
+.faq h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.faq-questions {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-question {
+    margin-bottom: 20px;
+}
+
+.faq-question h3 {
+    font-size: 22px;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.faq-question p {
+    font-size: 16px;
+    color: #666;
+    display: none;
+    margin-top: 10px;
+}
+
+.faq-question.active p {
+    display: block;
+}
+
+.faq-question:hover h3 {
+    color: #0056b3;
+}
+
+/* Strony błędu i specjalne */
+.not-found h1 {
+    font-size: 80px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* Animacje */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/* Resetowanie marginesów, paddingu i konfiguracja box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Podstawowe style ciała strony */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Nagłówek strony */
+header {
+    background: linear-gradient(135deg, #007bff, #00d4ff);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    margin-left: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffeb3b;
+}
+
+/* Sekcja Usług */
+.offer {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.offer h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.offer-details {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    background: linear-gradient(135deg, #e0e0e0, #ffffff);
+    padding: 40px;
+    margin: 15px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.service-item h3 {
+    font-size: 22px;
+    padding-bottom: 15px;
+    color: #007bff;
+}
+
+.service-item p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Sekcja Cennika */
+.pricing {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.pricing h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.pricing-plans {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.plan {
+    background: #fff;
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.plan:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.plan h3 {
+    font-size: 22px;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.plan .price {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.plan ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.plan ul li {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+/* Poprawa styli na stronie głównej - stopka i dolne sekcje */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+footer p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #ccc;
+}
+
+/* Animacje */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
