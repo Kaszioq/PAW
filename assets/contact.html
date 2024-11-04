@@ -20,9 +20,8 @@
     <section class="contact">
         <h2>Skontaktuj się z nami</h2>
         <p>Masz pytania? Chętnie pomożemy!</p>
-        <form class="contact-form" action="/" method="GET">
-            <input type="text" name="name" placeholder="Twoje imię" required>
-            <input type="text" name="name" placeholder="Twoje Nazwisko" required>
+        <form class="contact-form" action="/api/contact-messages" method="GET">
+            <input type="text" name="name" placeholder="Imię i Nazwisko" required>
             <input type="email" name="email" placeholder="Twój e-mail" required>
             <textarea name="message" placeholder="Twoja wiadomość" required></textarea>
             <button type="submit">Wyślij</button>
