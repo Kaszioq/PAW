@@ -74,21 +74,21 @@ app.get('/kontakt', (req, res) => {
 });
 
 app.post('/api/contact-messages', (req, res) => {
-  const { name, email, message } = req.body;
+    const { name, email, message } = req.body;
 
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: 'Wszystkie pola są wymagane.' });
-  }
-
-  const query = 'INSERT INTO messages (name, email, message) VALUES (?, ?, ?)';
-  db.query(query, [name, email, message], (err, result) => {
-    if (err) {
-      console.error('Błąd przy zapisywaniu wiadomości:', err);
-      return res.status(500).json({ error: 'Nie udało się zapisać wiadomości.' });
+    if (!name || !email || !message) {
+        return res.status(400).json({ error: 'Wszystkie pola są wymagane.' });
     }
-    res.status(201).json({ message: 'Wiadomość zapisana pomyślnie.', id: result.insertId });
-  });
-});
+
+    const query = 'INSERT INTO messages (name, email, message) VALUES (?, ?, ?)';
+    db.query(query, [name, email, message], (err, result) => {
+        if (err) {
+        console.error('Błąd przy zapisywaniu wiadomości:', err);
+        return res.status(500).json({ error: 'Nie udało się zapisać wiadomości.' });
+        }
+        res.redirect('/');
+    });
+});  
 
 app.get('/api/contact-messages', (req, res) => {
   const query = 'SELECT * FROM messages';
