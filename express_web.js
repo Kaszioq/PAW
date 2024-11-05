@@ -6,6 +6,7 @@ const mysql = require('mysql2');
 const app = express();
 const port = 3000;
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
@@ -74,19 +75,21 @@ app.get('/kontakt', (req, res) => {
 });
 
 app.post('/api/contact-messages', (req, res) => {
+    console.log('Odebrane dane:', req.body);
     const { name, email, message } = req.body;
-
+  
+    console.log('Dane z formularza:', { name, email, message });
+  
     if (!name || !email || !message) {
-        return res.status(400).json({ error: 'Wszystkie pola są wymagane.' });
+      return res.status(400).json({ error: 'Wszystkie pola są wymagane.' });
     }
-
+  
     const query = 'INSERT INTO messages (name, email, message) VALUES (?, ?, ?)';
     db.query(query, [name, email, message], (err, result) => {
-        if (err) {
-        console.error('Błąd przy zapisywaniu wiadomości:', err);
+      if (err) {
         return res.status(500).json({ error: 'Nie udało się zapisać wiadomości.' });
-        }
-        res.redirect('/');
+      }
+      res.redirect('/');
     });
 });  
 
