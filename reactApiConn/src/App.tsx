@@ -1,66 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./App.css";
+import Posts from "./pages/Posts/posts";
+import Post from "./pages/Post/post";
 
-// Definicja interfejsu dla postów
-interface Post {
-  id: number;
-  userId: number;
-  title: string;
-  body: string;
-}
 
 const App: React.FC = () => {
-  const [posts, setPosts] = useState<Array<Post>>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [expandedPosts, setExpandedPosts] = useState<number[]>([]);
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((data: Post[]) => {
-        setPosts(data);
-        setLoading(false);
-      });
-  }, []);
-
-  const toggleExpand = (id: number) => {
-    setExpandedPosts((prev) =>
-      prev.includes(id) ? prev.filter((postId) => postId !== id) : [...prev, id]
-    );
-  };
-
   return (
-    <div className="app-container">
-      <div className="background-shapes"></div>
-      <h1>Posts List</h1>
-      <h2>&lt;Array&lt;posts&gt;&gt;</h2>
-      {loading ? (
-        <p className="loading">Loading...</p>
-      ) : (
-        <div className="posts-grid">
-          {posts.map((post: Post) => (
-            <div key={post.id} className="post-card">
-              <h2
-                className="post-title"
-                onClick={() => toggleExpand(post.id)}
-                style={{ cursor: "pointer" }}
-              >
-                {post.title}
-              </h2>
-              <p
-                className={`post-body ${
-                  expandedPosts.includes(post.id) ? "expanded" : "collapsed"
-                }`}
-              >
-                {post.body}
-              </p>
-              <div className="divider"></div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+      <Router>
+          <Routes>
+              <Route path="/posts" element={<Posts />} />
+              <Route path="/post/:id" element={<Post />} />
+          </Routes>
+      </Router>
   );
 };
+
 
 export default App;

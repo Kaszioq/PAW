@@ -143,7 +143,16 @@ h2 {
   opacity: 1;
 }
 
-/* Linie oddzielające */
+.post-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .divider {
   height: 2px;
   width: 100%;
