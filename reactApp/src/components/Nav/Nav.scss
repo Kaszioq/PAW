@@ -2,18 +2,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #3d3d5c;
-  padding: 1rem;
-
+  background-color: #1e1e2f;
+  padding: 15px 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  
   .nav-logo {
     .logo-link {
-      color: #ffffff;
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: bold;
+      color: #f8c400;
       text-decoration: none;
+      transition: 0.3s ease;
 
       &:hover {
         opacity: 0.8;
+        transform: scale(1.05);
       }
     }
   }
@@ -21,20 +27,23 @@
   .nav-links {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
 
-    li {
-      a {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #ffffff;
-        text-decoration: none;
-        font-weight: 500;
+    li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: 0.3s;
 
-        &:hover {
-          text-decoration: underline;
-        }
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
       }
     }
   }

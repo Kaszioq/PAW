@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 interface PostType {
   id: number;
@@ -8,23 +9,24 @@ interface PostType {
   body: string;
 }
 
+const fetchPost = async (id: string): Promise<PostType> => {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  if (!response.ok) {
+    throw new Error("Post not found");
+  }
+  return response.json();
+};
+
 const Post: React.FC = () => {
-  const { id } = useParams();
-  const [post, setPost] = useState<PostType | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const { id } = useParams<{ id: string }>();
 
-  useEffect(() => {
-    if (!id) return;
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then((response) => response.json())
-      .then((data: PostType) => {
-        setPost(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, [id]);
+  const { data: post, isLoading, isError } = useQuery<PostType>({
+    queryKey: ["post", id],
+    queryFn: () => fetchPost(id!),
+    enabled: !!id,
+  });
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="app-container">
         <div className="background-shapes"></div>
@@ -33,7 +35,7 @@ const Post: React.FC = () => {
     );
   }
 
-  if (!post) {
+  if (isError || !post) {
     return (
       <div className="app-container">
         <div className="background-shapes"></div>

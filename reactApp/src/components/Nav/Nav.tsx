@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaHome, FaThList } from "react-icons/fa";
+import { FaHome, FaThList, FaNewspaper } from "react-icons/fa";
 import "./Nav.scss";
 
 const Nav: React.FC = () => {
@@ -15,6 +15,11 @@ const Nav: React.FC = () => {
         <li>
           <Link to="/">
             <FaHome /> Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/posts"> 
+            <FaNewspaper /> All Posts
           </Link>
         </li>
         <li>

@@ -1,72 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
 import "./Main.scss";
 
-const Main: React.FC = () => {
-  return (
-    <div className="home-page">
-      <section className="hero-section">
-        <div className="hero-content">
-          <h1>Welcome to MyBlog</h1>
-          <p className="subtitle">
-            Discover the latest posts, learn new things, and share your thoughts!
-          </p>
-          <button className="hero-button">
-            <Link to="/categories"> Get Started <FaArrowRight /> </Link>
-          </button>
-        </div>
-      </section>
+interface PostType {
+  id: number;
+  title: string;
+  content: string;
+}
 
-      <section className="featured-posts">
+const API_URL = "http://localhost:5000";
+
+const Main: React.FC = () => {
+  const [posts, setPosts] = useState<PostType[]>([]);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/posts`);
+      setPosts(response.data.slice(0, 3)); // Only show 3 posts
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  };
+
+  return (
+    <div className="main-container">
+      <h1>Welcome to MyBlog</h1>
+      <p>Discover amazing stories, guides, and insights.</p>
+
+      <div className="featured-posts">
         <h2>Featured Posts</h2>
         <div className="posts-grid">
-          <article className="post-card">
-            <img
-              src="https://via.placeholder.com/300x200"
-              alt="Post Cover"
-              className="post-image"
-            />
-            <div className="post-content">
-              <h3>Building a React App</h3>
-              <p>
-                Learn the basics of building a modern web application using React,
-                from setup to deployment.
-              </p>
+          {posts.map((post) => (
+            <div key={post.id} className="post-card">
+              <img
+                src={`https://source.unsplash.com/400x250/?blog,${post.id}`} // Random blog images
+                alt="Post Cover"
+                className="post-cover"
+              />
+              <h3>{post.title}</h3>
+              <p>{post.content.substring(0, 100)}...</p>
+              <Link to={`/post/${post.id}`} className="read-more">
+                Read More
+              </Link>
             </div>
-          </article>
-
-          <article className="post-card">
-            <img
-              src="https://via.placeholder.com/300x200"
-              alt="Post Cover"
-              className="post-image"
-            />
-            <div className="post-content">
-              <h3>Healthy Lifestyle Tips</h3>
-              <p>
-                Explore how to maintain a balanced lifestyle with nutrition, exercise,
-                and mindfulness.
-              </p>
-            </div>
-          </article>
-
-          <article className="post-card">
-            <img
-              src="https://via.placeholder.com/300x200"
-              alt="Post Cover"
-              className="post-image"
-            />
-            <div className="post-content">
-              <h3>Amazing Travel Destinations</h3>
-              <p>
-                Journey to the most beautiful places in the world and get travel tips
-                for your next vacation.
-              </p>
-            </div>
-          </article>
+          ))}
         </div>
-      </section>
+      </div>
+
+      <Link to="/posts" className="view-all-btn">
+        View All Posts
+      </Link>
     </div>
   );
 };

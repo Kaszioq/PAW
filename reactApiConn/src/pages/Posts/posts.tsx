@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 interface Post {
     id: number;
@@ -7,19 +8,21 @@ interface Post {
     body: string;
 }
 
-const Posts: React.FC = () => {
-  const [posts, setPosts] = useState<Array<Post>>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [expandedPosts, setExpandedPosts] = useState<number[]>([]);
+const fetchPosts = async (): Promise<Post[]> => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  if (!response.ok) {
+    throw new Error("Failed to fetch posts");
+  }
+  return response.json();
+};
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((data: Post[]) => {
-        setPosts(data);
-        setLoading(false);
-      });
-  }, []);
+const Posts: React.FC = () => {
+  const { data: posts, isLoading, isError } = useQuery<Post[]>({
+    queryKey: ["posts"],
+    queryFn: fetchPosts,
+  });
+
+  const [expandedPosts, setExpandedPosts] = useState<number[]>([]);
 
   const toggleExpand = (id: number) => {
     setExpandedPosts((prev) =>
@@ -32,11 +35,13 @@ const Posts: React.FC = () => {
       <div className="background-shapes"></div>
       <h1>Posts List</h1>
       <h2>&lt;Array&lt;posts&gt;&gt;</h2>
-      {loading ? (
+      {isLoading ? (
         <p className="loading">Loading...</p>
+      ) : isError ? (
+        <p className="loading">Failed to load posts.</p>
       ) : (
         <div className="posts-grid">
-          {posts.map((post: Post) => (
+          {posts?.map((post: Post) => (
             <div key={post.id} className="post-card">
               <h2
                 className="post-title"

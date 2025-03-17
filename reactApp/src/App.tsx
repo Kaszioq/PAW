@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main/main';
+import Posts from './pages/Posts/posts';
 import Post from './pages/Post/post';
 import CategoryList from './pages/CategoryList/categoryList';
 import Nav from './components/Nav/Nav';
@@ -15,6 +16,7 @@ const App: React.FC = () => {
             <div className="content">
               <Routes>
                 <Route path="/" element={<Main />} />
+                <Route path="/posts" element={<Posts />} />
                 <Route path="/post/:id" element={<Post />} />
                 <Route path="/categories" element={<CategoryList />} />
               </Routes>
