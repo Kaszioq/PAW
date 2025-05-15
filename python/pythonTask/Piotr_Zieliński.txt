@@ -1,0 +1,10 @@
+Kursy:
+- Informatyka,
+- Matematyka,
+- Chemia,
+- Ekonomia,
+Kursy:
+- Informatyka,
+- Matematyka,
+- Chemia,
+- Ekonomia,
